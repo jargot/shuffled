@@ -4,17 +4,17 @@
 
 package main
 
-import (
-  "fmt"
-)
+// import (
+//   "fmt"
+// )
 
-var _ = fmt.Println // For debugging only
+// var _ = fmt.Println // For debugging only
 
-
-/* TWO WAYS: Reversing the card, or turning over the deck
+/*
 **
 **
 */
+
 func turn_over(stack []int) (new_stack []int) {
   stack_len := len(stack) // Can't make it constant since constants are evaluated at compile time
   new_stack = make([]int, stack_len)
@@ -33,10 +33,8 @@ func straight_cut(stack []int, depth int) (new_stack []int) {
   return
 }
 
-// Positions should start from 1 and be in ascending order to speed up the algorithm
+// Positions must be > 1 and be in ascending order
 func cull(stack []int, asc_positions []int) (new_stack []int) {
-  fmt.Println(stack, asc_positions)
-
   culled_stack := make([]int, len(asc_positions))
   new_stack = make([]int, len(stack))
 
@@ -61,4 +59,3 @@ func cull(stack []int, asc_positions []int) (new_stack []int) {
   new_stack = append(new_stack, culled_stack...)
   return
 }
-
